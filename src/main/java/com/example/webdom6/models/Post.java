@@ -20,6 +20,10 @@ public class Post {
         this.title = title;
         this.content = content;
         this.dateCreated = dateCreated;
+
+        comments.add(new Comment(new User("usernaem", "pass"), "asdf omg omg"));
+        comments.add(new Comment(new User("usernaem", "pass"), "omg asdf omg"));
+        comments.add(new Comment(new User("usernaem", "pass"), "omg omg asdf"));
     }
 
     public User getAuthor() {
