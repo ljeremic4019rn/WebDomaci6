@@ -21,9 +21,8 @@ public class Post {
         this.content = content;
         this.dateCreated = dateCreated;
 
-        comments.add(new Comment(new User("usernaem", "pass"), "asdf omg omg"));
-        comments.add(new Comment(new User("usernaem", "pass"), "omg asdf omg"));
-        comments.add(new Comment(new User("usernaem", "pass"), "omg omg asdf"));
+        comments.add(new Comment("user1", "omg best article ever"));
+        comments.add(new Comment("user2", "yaaaaas queeeen soooo goouudd"));
     }
 
     public User getAuthor() {

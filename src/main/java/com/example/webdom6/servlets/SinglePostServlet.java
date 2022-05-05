@@ -1,5 +1,6 @@
 package com.example.webdom6.servlets;
 
+import com.example.webdom6.models.Comment;
 import com.example.webdom6.models.Post;
 import com.example.webdom6.repo.posts.IPostRepo;
 import com.example.webdom6.repo.posts.PostRepo;
@@ -24,10 +25,17 @@ public class SinglePostServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getPathInfo().substring(1));
         Post post = this.postRepo.find(id);
-        System.out.println(post.getTitle());
         request.getSession().setAttribute("post", post);
 
-        System.out.println(request.getSession().getAttribute("post"));
+        request.getRequestDispatcher("/single_post.jsp").forward(request, response);
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getPathInfo().substring(1));
+        Post post = this.postRepo.find(id);
+        post.getComments().add(new Comment(request.getParameter("name"), request.getParameter("comment")));
 
         request.getRequestDispatcher("/single_post.jsp").forward(request, response);
     }

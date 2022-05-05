@@ -15,19 +15,17 @@
     <%@ include file="styles.jsp" %>
 </head>
 <body>
+<%@ include file="nav_bar.jsp" %>
 <% Post post = ((Post) session.getAttribute("post"));%>
 
 
 <div class="container">
     <article>
-        <h1><%=post.getTitle()%>
-        </h1>
+        <h1><%=post.getTitle()%></h1>
         <div>
-            <small><%=post.getAuthor().getUsername()%>
-            </small>
+            <small><%=post.getAuthor().getUsername()%></small>
             <br>
-            <small><%=post.getDateCreated()%>
-            </small>
+            <small><%=post.getDateCreated()%></small>
         </div>
         <br>
 
@@ -39,26 +37,27 @@
             <div>
                 <h2>Comments:</h2>
                 <c:forEach var="comment" items="${post.getComments()}">
-                <div class="container border">
-                    <h5>${comment.author.username}</h5>
-                    <h7>${comment.content}</h7>
-                </div>
-                <br>
+                    <div class="container border">
+                        <h5>${comment.author}</h5>
+                        <h7>${comment.content}</h7>
+                    </div>
+                    <br>
                 </c:forEach>
             </div>
 
-            <form method="POST" action="<%=application.getContextPath() + "/posts" + post.getId()%>">
+            <form method="POST" action="<%=application.getContextPath() + "/posts/" + post.getId()%>">
                 <div class="form-group">
-                    <label for="name">Quote</label>
+                    <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
 
-                    <label for="comment">Quote</label>
-                    <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter your comment">
+                    <label for="comment">Comment</label>
+                    <input type="text" class="form-control" id="comment" name="comment"
+                           placeholder="Enter your comment">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
+        </div>
     </article>
 </div>
 
