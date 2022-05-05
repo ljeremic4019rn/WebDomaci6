@@ -5,22 +5,22 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Post {
 
-    private String author;
+    private User author;
     private String title;
     private String content;
     private final List<Comment> comments = new CopyOnWriteArrayList<>();
 
-    public Post(String author, String title, String content) {
+    public Post(User author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 

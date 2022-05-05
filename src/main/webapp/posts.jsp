@@ -12,8 +12,11 @@
     <%@ include file="styles.jsp" %>
 </head>
 <body>
-<%@ include file="nav_bar.jsp" %>
+    <%@ include file="nav_bar.jsp" %>
 
-    <h1>KURAC VELIKIIII</h1>
+    <h1>Posts:</h1>
+
+
+
 </body>
 </html>

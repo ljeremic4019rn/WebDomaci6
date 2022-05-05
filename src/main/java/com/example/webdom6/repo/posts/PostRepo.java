@@ -8,17 +8,21 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class PostRepo implements IPostRepo{
 
-    private static final List<Post> quotes = new CopyOnWriteArrayList<>();
+    private static final List<Post> posts = new CopyOnWriteArrayList<>();
 
     public List<Post> all() {
-        List<Post> quoteList = new ArrayList<>();
-        quotes.iterator().forEachRemaining(e -> {//todo ovo uradi na kraju
-            quoteList.add(e);
+        List<Post> postList = new ArrayList<>();
+        posts.iterator().forEachRemaining(e -> {//todo ovo uradi na kraju
+            postList.add(e);
         });
-        return quoteList;
+        return postList;
     }
 
     public void insert(Post quote) {
-        quotes.add(quote);
+        posts.add(quote);
+    }
+
+    public Post find(int id) {
+        return posts.get(id);
     }
 }

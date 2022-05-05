@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SinglePostServlet", value = "/posts/*")
-public class SinglePostServlet extends HttpServlet {
+@WebServlet(name = "NewPostServlet", value = "/new-post")
+public class NewPostServlet extends HttpServlet {
 
     private IPostRepo postRepo;
 

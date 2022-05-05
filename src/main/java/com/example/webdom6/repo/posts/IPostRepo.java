@@ -8,4 +8,6 @@ public interface IPostRepo {
     public List<Post> all();
 
     public void insert(Post quote);
+
+    public Post find(int id);
 }

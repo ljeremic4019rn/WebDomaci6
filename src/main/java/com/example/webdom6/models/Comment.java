@@ -2,19 +2,19 @@ package com.example.webdom6.models;
 
 public class Comment {
 
-    private String author;
+    private User author;
     private String content;
 
-    public Comment(String author, String content) {
+    public Comment(User author, String content) {
         this.author = author;
         this.content = content;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 

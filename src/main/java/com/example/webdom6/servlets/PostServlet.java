@@ -1,6 +1,8 @@
 package com.example.webdom6.servlets;
 
 
+import com.example.webdom6.models.Post;
+import com.example.webdom6.models.User;
 import com.example.webdom6.repo.posts.IPostRepo;
 import com.example.webdom6.repo.posts.PostRepo;
 
@@ -26,5 +28,16 @@ public class PostServlet extends HttpServlet {
         req.setAttribute("posts", this.postRepo.all());
 
         req.getRequestDispatcher("/posts.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User author = (User) req.getSession().getAttribute("user");
+        String text = req.getParameter("post");
+        if (author != null && text != null) {
+            this.postRepo.insert(new Post(author, text, "context"));
+        }
+
+        resp.sendRedirect(getServletContext().getContextPath() + "/posts");
     }
 }
