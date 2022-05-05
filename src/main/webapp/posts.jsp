@@ -1,3 +1,4 @@
+<%@ page import="com.example.webdom6.models.Post" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -16,10 +17,11 @@
     <c:forEach var="post" items="${posts}">
             <div class="container border">
                 <a href="<%=application.getContextPath()%>/posts/${post.getId()}" aria-current="true">
-
                 <h3>${post.getTitle()}</h3>
                 </a>
-
+                <% String shortText = String.format("%."+ 100 +"s", ((Post) session.getAttribute("post")).getContent() );%>
+                <small><%= shortText %></small>
+                <br>
                 <small>Opsirnije...</small>
             </div>
     </c:forEach>
