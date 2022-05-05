@@ -1,5 +1,7 @@
 package com.example.webdom6.models;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -9,13 +11,15 @@ public class Post {
     private User author;
     private String title;
     private String content;
+    private LocalDate dateCreated;
     private final List<Comment> comments = new CopyOnWriteArrayList<>();
 
-    public Post(int id, User author, String title, String content) {
+    public Post(int id, User author, String title, String content, LocalDate dateCreated) {
         this.id = id;
         this.author = author;
         this.title = title;
         this.content = content;
+        this.dateCreated = dateCreated;
     }
 
     public User getAuthor() {
@@ -52,5 +56,13 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
     }
 }

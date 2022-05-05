@@ -23,8 +23,11 @@ public class SinglePostServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getPathInfo().substring(1));
-        Post subject = this.postRepo.find(id);
-        request.setAttribute("post", subject);
+        Post post = this.postRepo.find(id);
+        System.out.println(post.getTitle());
+        request.getSession().setAttribute("post", post);
+
+        System.out.println(request.getSession().getAttribute("post"));
 
         request.getRequestDispatcher("/single_post.jsp").forward(request, response);
     }

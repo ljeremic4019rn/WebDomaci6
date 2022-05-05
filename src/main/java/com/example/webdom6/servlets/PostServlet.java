@@ -19,7 +19,7 @@ import java.util.Objects;
 public class PostServlet extends HttpServlet {
 
     private IPostRepo postRepo;
-    private static int postIdCounter = 1;
+    private static int postIdCounter = 0;
 
     @Override
     public void init() throws ServletException {
@@ -39,10 +39,9 @@ public class PostServlet extends HttpServlet {
         String content = req.getParameter("content");
         PrintWriter out = resp.getWriter();
 
-//        System.out.println(author + " " + title + " " + content);
 
         if (author != null && !Objects.equals(title, "") && !Objects.equals(content, "")) {
-            this.postRepo.insert(new Post(postIdCounter++, author, title, content));
+            this.postRepo.insert(new Post(postIdCounter++, author, title, content, java.time.LocalDate.now()));
             resp.sendRedirect(getServletContext().getContextPath() + "/posts");
         }
         else{
