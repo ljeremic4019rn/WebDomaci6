@@ -18,8 +18,8 @@ public class PostRepo implements IPostRepo{
         return postList;
     }
 
-    public void insert(Post quote) {
-        posts.add(quote);
+    public void insert(Post post) {
+        posts.add(post);
     }
 
     public Post find(int id) {

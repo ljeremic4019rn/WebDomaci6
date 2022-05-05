@@ -5,12 +5,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Post {
 
+    private int id;
     private User author;
     private String title;
     private String content;
     private final List<Comment> comments = new CopyOnWriteArrayList<>();
 
-    public Post(User author, String title, String content) {
+    public Post(int id, User author, String title, String content) {
+        this.id = id;
         this.author = author;
         this.title = title;
         this.content = content;
@@ -42,5 +44,13 @@ public class Post {
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

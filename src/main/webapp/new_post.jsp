@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.webdom6.models.User" %><%--
   Created by IntelliJ IDEA.
   User: Shus
   Date: 5/5/2022
@@ -14,11 +14,14 @@
 <body>
 <%@ include file="nav_bar.jsp" %>
 
+
+<%--todo postavi akciju kasnije ovde--%>
+
 <div class="container">
     <form method="POST" action="<%=application.getContextPath() + "/posts"%>">
         <div class="form-group">
             <label for="author">Author</label>
-            <input type="text" class="form-control" id="author" name="author" placeholder="Enter username">
+            <input type="text" class="form-control" id="author" name="author" value="<%= ((User) session.getAttribute("user")).getUsername()%>" readonly>
         </div>
         <div class="form-group">
             <label for="author">Title</label>
@@ -27,7 +30,7 @@
         <div class="form-group">
             <label for="author">Content</label>
             <input type="text" class="form-control" id="content" name="content" placeholder="Enter content">
-        </div>
+        </div >
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

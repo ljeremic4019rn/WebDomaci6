@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(name = "NewPostServlet", value = "/new-post")
+@WebServlet(name = "NewPostServlet", value = "/new_post")
 public class NewPostServlet extends HttpServlet {
 
     private IPostRepo postRepo;
@@ -22,11 +23,17 @@ public class NewPostServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println(request.getPathInfo());
-        int id = Integer.parseInt(request.getPathInfo().substring(1));
-        Post subject = this.postRepo.find(id);
-        request.setAttribute("subject", subject);
+        PrintWriter out = response.getWriter();
 
-        request.getRequestDispatcher("/single-subject.jsp").forward(request, response);
+        if (request.getSession().getAttribute("user") != null){
+            request.getRequestDispatcher("/new_post.jsp").forward(request, response);
+        }
+        else{
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Not logged in');");
+            out.println("location='/posts';");
+            out.println("</script>");
+        }
+
     }
 }
