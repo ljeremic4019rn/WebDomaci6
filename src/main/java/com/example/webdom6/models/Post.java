@@ -25,6 +25,10 @@ public class Post {
         comments.add(new Comment("user2", "yaaaaas queeeen soooo goouudd"));
     }
 
+    public String shortenedText(){
+        return String.format("%."+ content.length()/4 +"s", content);
+    }
+
     public User getAuthor() {
         return author;
     }

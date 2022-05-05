@@ -19,8 +19,7 @@
                 <a href="<%=application.getContextPath()%>/posts/${post.getId()}" aria-current="true">
                 <h3>${post.getTitle()}</h3>
                 </a>
-                <% String shortText = String.format("%."+ 100 +"s", ((Post) session.getAttribute("post")).getContent() );%>
-                <small><%= shortText %></small>
+                <small>${post.shortenedText()}</small>
                 <br>
                 <small>Opsirnije...</small>
             </div>
